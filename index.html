@@ -24,7 +24,8 @@
 
         <!-- my styles -->
         <style>
-            .reveal h1 {
+            .reveal h1,
+            .reveal h2 {
                 text-shadow: 2px 4px 6px #ccc;
             }
             .reveal h1,
@@ -58,16 +59,16 @@
 </section>
 
 <section>
-    <h1>Demo</h1>
+    <h2>Demo</h2>
     <h3><a href="http://webrtc-app.gornostal.name/">http://webrtc-app.gornostal.name/</a></h3>
     <br />
     <small>Source - <a href="https://github.com/gornostal/my-webrtc-app">https://github.com/gornostal/my-webrtc-app</a></small>
 </section>
 
 <section>
-    <h1>Web Real-Time Communication</h1>
+    <h2>P2P Connection</h2>
 
-    <small>(Рисунок з двома брузерами, які передають між собою дані.)</small>
+    <img src="img/p2p.png" alt="" />
 
     <aside class="notes">
         Ідея - зробити можливим передачу потокового відео/аудіо (чи інших даних) напряму між браузерами.<br />
@@ -80,9 +81,9 @@
 </section>
 
 <section>
-    <h1>Session Traversal Utilities for NAT (<a href="http://en.wikipedia.org/wiki/STUN">STUN</a>)</h1>
+    <h2>Session Traversal Utilities for NAT (<a href="http://en.wikipedia.org/wiki/STUN">STUN</a>)</h2>
 
-    <small>(Рисунок)</small>
+    <img src="img/stun.png" alt="" />
 
     <aside class="notes">
         Якщо коротко, то STUN сервер потрібен для визначення свого зовнішного ІР<br />
@@ -94,9 +95,9 @@
 
 
 <section>
-    <h1>Traversal Using Relay NAT (<a href="http://en.wikipedia.org/wiki/Traversal_Using_Relay_NAT">TURN</a>)</h1>
+    <h2>Traversal Using Relay NAT (<a href="http://en.wikipedia.org/wiki/Traversal_Using_Relay_NAT">TURN</a>)</h2>
 
-    <small>(Рисунок)</small>
+    <img src="img/turn.png" alt="" />
 
     <aside class="notes">
         Протокол дозволяє вузлу за НАТ отримувати вхідні дані.
@@ -104,7 +105,12 @@
 </section>
 
 <section>
-    <h1>Interactive Connectivity Establishment (<a href="http://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a>)</h1>
+    <h2>Finding connection candidates</h2>
+    <img src="img/candidates.png" alt="Finding connection candidates" />
+</section>
+
+<section>
+    <h2>Interactive Connectivity Establishment (<a href="http://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a>)</h2>
 
     <aside class="notes">
         Протокол для обходу НАТ
@@ -112,17 +118,7 @@
 </section>
 
 <section>
-    <img src="img/candidates.png" alt="Finding connection candidates" />
-    <p>Finding connection candidates</p>
-</section>
-
-<section>
-    <img src="img/dataPathways.png" alt="WebRTC data pathways" />
-    <p>WebRTC data pathways</p>
-</section>
-
-<section>
-    <h1>WebRTC Components:</h1>
+    <h2>WebRTC Components:</h2>
     <ul>
         <li>MediaStream (aka getUserMedia)</li>
         <li>RTCPeerConnection</li>
@@ -131,7 +127,7 @@
 </section>
 
 <section>
-    <h1>MediaStream</h1>
+    <h2>MediaStream</h2>
     <h3>(aka getUserMedia)</h3>
 
     <pre><code data-trim>
@@ -156,7 +152,7 @@ navigator.getUserMedia(
 </section>
 
 <section>
-    <h1>RTCPeerConnection</h1>
+    <h2>RTCPeerConnection</h2>
 
     <ul>
         <li>packet loss concealment</li>
@@ -174,19 +170,49 @@ navigator.getUserMedia(
 </section>
 
 <section>
-    <h1>RTCDataChannel</h1>
+    <h2>RTCDataChannel</h2>
     <p>API for high performance, low latency, peer-to-peer communication of arbitrary data</p>
 </section>
 
 <section>
-    <h1>Interoperability</h1>
+    <h2>WebRTC Connection Process</h2>
+    <a href="img/webrtc-connection-process.png">
+        <img src="img/webrtc-connection-process.png" alt="WebRTC Connection Process" />
+    </a>
 </section>
 
 <section>
-    <h1>Learn more</h1>
+    <h2>Caveats</h2>
+    <ul>
+        <li>Peers must be present with local streaming video before sending offer/answer SDP</li>
+        <li>For 'Answerer'; Do not add ICE candidate until the peer generates the 'Answer SDP'</li>
+        <li>Once remote media starts streaming stop adding ICE candidates</li>
+        <li>Never create 'Answer SDP' until you get the 'Offer SDP'</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Interoperability</h2>
+
+    <p><q>
+        <a href="https://nightly.mozilla.org/">Firefox Nightly</a> (as of 1/30/13) and
+        <a href="https://www.google.com/intl/en/chrome/browser/beta.html">Chrome M25 Beta</a>
+        and later are interoperable, but currently require a "small" degree of adaptation on the part of the calling site.
+    </q></p>
+    <br />
+    <p>
+        <small>
+            More here: <a href="https://sites.google.com/site/webrtc/interop">https://sites.google.com/site/webrtc/interop</a>
+        </small>
+    </p>
+</section>
+
+<section>
+    <h2>Learn more</h2>
     <ul>
         <li><a href="https://apprtc.appspot.com/">apprtc.appspot.com</a></li>
         <li><a href="https://bistri.com/">bistri.com</a></li>
+        <li>Blog <a href="https://webrtc-experiment.appspot.com/">WebRTC Experiments & Demos</a> by Muaz Khan</li>
         <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">html5rocks.com/en/tutorials/webrtc/basics/</a></li>
         <li><a href="https://www.youtube.com/watch?v=E8C8ouiXHHk">Video of Justin Uberti's WebRTC session at Google I/O, 27 June 2012</a></li>
     </ul>
@@ -217,7 +243,6 @@ navigator.getUserMedia(
                 dependencies: [
                     { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
                     { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
                     { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
                 ]
             });
