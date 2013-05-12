@@ -24,6 +24,15 @@
 
         <!-- my styles -->
         <style>
+            .reveal h1 {
+                text-shadow: 2px 4px 6px #ccc;
+            }
+            .reveal h1,
+            .reveal h2,
+            .reveal h3 {
+                text-transform: none;
+                line-height: 1em;
+            }
             .simple-image {border: none !important; box-shadow: none !important; }
         </style>
 
@@ -39,35 +48,149 @@
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
 
-                <section>
-                    <h2>Introduction to</h2>
-                    <img src="img/webrtclogo.png"
-                    height="50" class="simple-image" alt="">
-                    <br /><br /><br />
-                    <p>
-                        <small>by <a href="http://github.com/gornostal">Aleksandr Gornostal</a> /
-                            <a href="http://twitter.com/s_gornostal">@s_gornostal</a></small>
-                    </p>
-                </section>
+<section>
+    <h1>Introduction to WebRTC</h1>
+    <img src="img/logo.png" class="simple-image" alt="">
+    <br /><br /><br />
+    <p>
+        <small>by <a href="http://github.com/gornostal">Aleksandr Gornostal</a></small>
+    </p>
+</section>
 
-                <section>
-                    <h1>slide 2</h1>
-                </section>
+<section>
+    <h1>Demo</h1>
+    <h3><a href="http://webrtc-app.gornostal.name/">http://webrtc-app.gornostal.name/</a></h3>
+    <br />
+    <small>Source - <a href="https://github.com/gornostal/my-webrtc-app">https://github.com/gornostal/my-webrtc-app</a></small>
+</section>
+
+<section>
+    <h1>Web Real-Time Communication</h1>
+
+    <small>(Рисунок з двома брузерами, які передають між собою дані.)</small>
+
+    <aside class="notes">
+        Ідея - зробити можливим передачу потокового відео/аудіо (чи інших даних) напряму між браузерами.<br />
+        Щоб зменшити об’єми даних які проходять через сервери.<br />
+
+        І все було б досить просто, аби не існувало такого поняття як NAT, а всі комп’ютери мали статичні ІР<br />
+        Якщо комп’ютери за НАТом, то ситуація складніша.<br />
+        Використовувати третій хост з виділеним ІР для трансляції трафіка - не варіант.
+    </aside>
+</section>
+
+<section>
+    <h1>Session Traversal Utilities for NAT (<a href="http://en.wikipedia.org/wiki/STUN">STUN</a>)</h1>
+
+    <small>(Рисунок)</small>
+
+    <aside class="notes">
+        Якщо коротко, то STUN сервер потрібен для визначення свого зовнішного ІР<br />
+        Трафік через нього проходити не буде.<br />
+        Існує велика кількість безкоштовних STUN серверів.<br />
+        STUN не працює в мережах з симетричними NAT
+    </aside>
+</section>
 
 
-                <section>
-                    <h1>slide 3</h1>
-                </section>
+<section>
+    <h1>Traversal Using Relay NAT (<a href="http://en.wikipedia.org/wiki/Traversal_Using_Relay_NAT">TURN</a>)</h1>
 
+    <small>(Рисунок)</small>
 
-                <section>
-                    <h1>slide 4</h1>
-                </section>
+    <aside class="notes">
+        Протокол дозволяє вузлу за НАТ отримувати вхідні дані.
+    </aside>
+</section>
 
+<section>
+    <h1>Interactive Connectivity Establishment (<a href="http://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a>)</h1>
 
-                <section>
-                    <h1>slide 5</h1>
-                </section>
+    <aside class="notes">
+        Протокол для обходу НАТ
+    </aside>
+</section>
+
+<section>
+    <img src="img/candidates.png" alt="Finding connection candidates" />
+    <p>Finding connection candidates</p>
+</section>
+
+<section>
+    <img src="img/dataPathways.png" alt="WebRTC data pathways" />
+    <p>WebRTC data pathways</p>
+</section>
+
+<section>
+    <h1>WebRTC Components:</h1>
+    <ul>
+        <li>MediaStream (aka getUserMedia)</li>
+        <li>RTCPeerConnection</li>
+        <li>RTCDataChannel</li>
+    </ul>
+</section>
+
+<section>
+    <h1>MediaStream</h1>
+    <h3>(aka getUserMedia)</h3>
+
+    <pre><code data-trim>
+window.URL = window.URL || window.webkitURL;
+navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+navigator.getUserMedia(
+    {video: true, audio: true}, // constraints object
+
+    function(localMediaStream){ // success callback
+        var video = document.createElement("video");
+        video.autoplay = true;
+        video.src = window.URL.createObjectURL(localMediaStream);
+        document.body.appendChild(video);
+    },
+
+    function(error){ // failure callback
+        console.error(error);
+    }
+);
+    </code></pre>
+</section>
+
+<section>
+    <h1>RTCPeerConnection</h1>
+
+    <ul>
+        <li>packet loss concealment</li>
+        <li>echo cancellation</li>
+        <li>bandwidth adaptivity</li>
+        <li>dynamic jitter buffering</li>
+        <li>automatic gain control</li>
+        <li>noise reduction and suppression</li>
+        <li>image 'cleaning'</li>
+    </ul>
+
+    <aside class="notes">
+        Компонент, який забезпечує стабільне та ефективне з’єднання між юзерами
+    </aside>
+</section>
+
+<section>
+    <h1>RTCDataChannel</h1>
+    <p>API for high performance, low latency, peer-to-peer communication of arbitrary data</p>
+</section>
+
+<section>
+    <h1>Interoperability</h1>
+</section>
+
+<section>
+    <h1>Learn more</h1>
+    <ul>
+        <li><a href="https://apprtc.appspot.com/">apprtc.appspot.com</a></li>
+        <li><a href="https://bistri.com/">bistri.com</a></li>
+        <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">html5rocks.com/en/tutorials/webrtc/basics/</a></li>
+        <li><a href="https://www.youtube.com/watch?v=E8C8ouiXHHk">Video of Justin Uberti's WebRTC session at Google I/O, 27 June 2012</a></li>
+    </ul>
+</section>
 
             </div>
 
@@ -85,6 +208,7 @@
                 progress: true,
                 history: true,
                 center: true,
+                rollingLinks: false,
 
                 theme: Reveal.getQueryHash().theme || 'beige', // available themes are in /css/theme
                 transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
