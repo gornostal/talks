@@ -70,13 +70,18 @@
     <img src="img/logo.png" class="simple-image" alt="">
     <br /><br /><br />
     <p>
-        <small>by <a href="http://github.com/gornostal">Aleksandr Gornostal</a></small>
+        <small>
+            by <a href="http://github.com/gornostal">Aleksandr Gornostal</a> /
+            <a href="twitter.com/s_gornostal">@s_gornostal</a>
+        </small>
     </p>
 </section>
 
 <section>
     <h2>Demo</h2>
     <h3><a href="http://webrtc-app.gornostal.name/">http://webrtc-app.gornostal.name/</a></h3>
+    <small>Works in Chrome 25 or higher</small>
+    <br />
     <br />
     <small>Source - <a href="https://github.com/gornostal/my-webrtc-app">https://github.com/gornostal/my-webrtc-app</a></small>
 </section>
@@ -92,7 +97,7 @@
 
         І все було б досить просто, аби не існувало такого поняття як NAT, а всі комп’ютери мали статичні ІР<br />
         Якщо комп’ютери за НАТом, то ситуація складніша.<br />
-        Використовувати третій хост з виділеним ІР для трансляції трафіка - не варіант.
+        Використовувати третій хост з виділеним ІР для трансляції трафіка - поганий варіант.
     </aside>
 </section>
 
@@ -100,6 +105,7 @@
     <h2>Session Traversal Utilities for NAT (<a href="http://en.wikipedia.org/wiki/STUN">STUN</a>)</h2>
 
     <img src="img/stun.png" alt="" />
+    <small>Google's free STUN server: <code>stun.l.google.com:19302</code></small>
 
     <aside class="notes">
         Якщо коротко, то STUN сервер потрібен для визначення свого зовнішного ІР<br />
@@ -115,8 +121,10 @@
 
     <img src="img/turn.png" alt="" />
 
+    <small>Free STUN/TURN server <a href="http://numb.viagenie.ca/">http://numb.viagenie.ca/</a></small>
+
     <aside class="notes">
-        Протокол дозволяє вузлу за НАТ отримувати вхідні дані.
+        Якщо STUN не працює то залишається тільки передавати дані через Relay Server
     </aside>
 </section>
 
@@ -124,13 +132,17 @@
     <h2>Interactive Connectivity Establishment (<a href="http://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a>)</h2>
     <img src="img/ice.png" alt="Finding connection candidates" />
     <aside class="notes">
-        Протокол для обходу НАТ
+        Протокол який визначає оптимальний шлях з’єднання
     </aside>
 </section>
 
 <section>
     <h2>WebRTC data pathways</h2>
     <img src="img/data_pathways.png" alt="WebRTC data pathways">
+
+    <aside class="notes">
+        Плавно повертаємось до WebRTC
+    </aside>
 </section>
 
 <section>
@@ -165,6 +177,7 @@ navigator.getUserMedia(
     }
 );
     </code></pre>
+    <small>More info on <a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN</a></small>
 </section>
 
 <section>
@@ -221,12 +234,6 @@ navigator.getUserMedia(
             More here: <a href="https://sites.google.com/site/webrtc/interop">https://sites.google.com/site/webrtc/interop</a>
         </small>
     </p>
-</section>
-
-<section>
-    <h2>Free STUN/TURN server</h2>
-    <br>
-    <h3><a href="http://numb.viagenie.ca/">http://numb.viagenie.ca/</a></h3>
 </section>
 
 <section>
