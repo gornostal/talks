@@ -35,6 +35,10 @@
                 text-transform: none;
                 line-height: 1em;
             }
+            .reveal h3.link {
+                margin: 0;
+                margin-top: 35px;
+            }
             .simple-image {border: none !important; box-shadow: none !important; }
             .images-list{
                 display: block;
@@ -50,6 +54,11 @@
                 border: none !important;
                 box-shadow: none !important;
                 height: 50px;
+            }
+            .reveal .info {
+                color: #807878;
+                font-size: 0.85em;
+                font-style: italic;
             }
         </style>
 
@@ -80,11 +89,112 @@
 <section>
     <h2>Demo</h2>
     <h3><a href="http://webrtc-app.gornostal.name/">http://webrtc-app.gornostal.name/</a></h3>
-    <small>Works in Chrome 25 or higher</small>
+    <small>Works in Chrome 26 or higher</small>
     <br />
     <br />
     <small>Source - <a href="https://github.com/gornostal/my-webrtc-app">https://github.com/gornostal/my-webrtc-app</a></small>
+
+    <aside class="notes">
+        для того щоб це працювало, нам потрібно:<br>
+        - під’єднатись до вебкамери та мікрофону<br>
+        - передати відео та аудіо потоки між комп’ютерами<br>
+        - мати змогу передачі довільних даних р2р
+    </aside>
 </section>
+
+<section>
+    <h2>WebRTC Components:</h2>
+    <ul>
+        <li>MediaStream (aka getUserMedia)</li>
+        <li>RTCPeerConnection</li>
+        <li>RTCDataChannel</li>
+    </ul>
+</section>
+
+<section>
+    <h2>MediaStream</h2>
+    <h3>(aka getUserMedia)</h3>
+
+    <pre><code data-trim>
+window.URL = window.URL || window.webkitURL;
+navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+navigator.getUserMedia(
+    {video: true, audio: true}, // constraints object
+
+    function(localMediaStream){ // success callback
+        var video = document.createElement("video");
+        video.autoplay = true;
+        video.src = window.URL.createObjectURL(localMediaStream);
+        document.body.appendChild(video);
+    },
+
+    function(error){ // failure callback
+        console.error(error);
+    }
+);
+    </code></pre>
+    <small>API description on <a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN</a></small>
+
+    <aside class="notes">
+        getUserMedia() дає нам відеопотік та аудіопотік, які синхронізовані між собою
+        можна окремо аудіо витягувати
+    </aside>
+</section>
+
+<section>
+    <h2>MediaStream Demos:</h2>
+
+    <h3 class="link"><a href="http://simpl.info/getusermedia/">simpl.info/getusermedia</a></h3>
+
+    <h3 class="link"><a href="http://idevelop.ro/ascii-camera/">idevelop.ro/ascii-camera</a></h3>
+
+    <h3 class="link"><a href="http://webcamtoy.com/app/">webcamtoy.com</a></h3>
+    <i class="info">(requires WebGL)</i>
+
+    <h3 class="link"><a href="https://html5-demos.appspot.com/static/getusermedia/screenshare.html">screen sharing</a></h3>
+    <i class="info">(works in Chrome with enabled screen capture support)</i>
+
+    <aside class="notes">
+        було б круто тепер передавати зображення та звук на інший комп’ютер, для цього є RTCPeerConnection
+    </aside>
+</section>
+
+<section>
+    <h2>RTCPeerConnection</h2>
+    <p>Audio and video communication between peers</p>
+    <br>
+    <ul>
+        <li>remove noise from audio and video</li>
+        <li>codec handling</li>
+        <li>peer to peer communication</li>
+        <li>security</li>
+        <li>bandwidth management</li>
+    </ul>
+
+    <aside class="notes">
+        пояснити простими словами
+        Компонент, який забезпечує стабільне та ефективне з’єднання між юзерами
+    </aside>
+</section>
+
+<section>
+    <h2>RTCDataChannel</h2>
+    <p>API for high performance, low latency, peer-to-peer communication of arbitrary data</p>
+
+    <aside class="notes">
+        області застосування - ігри
+        it can be unreliable or reliable (like udp or tcp)
+        simpl.info
+        sharefest.me
+    </aside>
+</section>
+
+<section>
+    <h1>See what's going on</h1>
+    <a href="chrome://webrtc-internals/">chrome://webrtc-internals/</a>
+</section>
+
 
 <section>
     <h2>P2P Connection</h2>
@@ -124,7 +234,9 @@
     <small>Free STUN/TURN server <a href="http://numb.viagenie.ca/">http://numb.viagenie.ca/</a></small>
 
     <aside class="notes">
+        у 86% випадків можна встановити р2р з’єднання, в інших використовуємо relay server
         Якщо STUN не працює то залишається тільки передавати дані через Relay Server
+        А як же зрозуміти коли працює можливе р2р з’єднання, а коли ні? Для цього є ICE...
     </aside>
 </section>
 
@@ -143,64 +255,6 @@
     <aside class="notes">
         Плавно повертаємось до WebRTC
     </aside>
-</section>
-
-<section>
-    <h2>WebRTC Components:</h2>
-    <ul>
-        <li>MediaStream (aka getUserMedia)</li>
-        <li>RTCPeerConnection</li>
-        <li>RTCDataChannel</li>
-    </ul>
-</section>
-
-<section>
-    <h2>MediaStream</h2>
-    <h3>(aka getUserMedia)</h3>
-
-    <pre><code data-trim>
-window.URL = window.URL || window.webkitURL;
-navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-navigator.getUserMedia(
-    {video: true, audio: true}, // constraints object
-
-    function(localMediaStream){ // success callback
-        var video = document.createElement("video");
-        video.autoplay = true;
-        video.src = window.URL.createObjectURL(localMediaStream);
-        document.body.appendChild(video);
-    },
-
-    function(error){ // failure callback
-        console.error(error);
-    }
-);
-    </code></pre>
-    <small>More info on <a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN</a></small>
-</section>
-
-<section>
-    <h2>RTCPeerConnection</h2>
-
-    <ul>
-        <li>packet loss concealment</li>
-        <li>echo cancellation</li>
-        <li>bandwidth adaptivity</li>
-        <li>dynamic jitter buffering</li>
-        <li>automatic gain control</li>
-        <li>noise reduction and suppression</li>
-        <li>image 'cleaning'</li>
-    </ul>
-
-    <aside class="notes">
-        Компонент, який забезпечує стабільне та ефективне з’єднання між юзерами
-    </aside>
-</section>
-
-<section>
-    <h2>RTCDataChannel</h2>
-    <p>API for high performance, low latency, peer-to-peer communication of arbitrary data</p>
 </section>
 
 <section>
@@ -253,7 +307,8 @@ navigator.getUserMedia(
         <li><a href="https://bistri.com/">bistri.com</a></li>
         <li>Blog <a href="https://webrtc-experiment.appspot.com/">WebRTC Experiments & Demos</a> by Muaz Khan</li>
         <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">html5rocks.com/en/tutorials/webrtc/basics/</a></li>
-        <li><a href="https://www.youtube.com/watch?v=E8C8ouiXHHk">Video of Justin Uberti's WebRTC session at Google I/O, 27 June 2012</a></li>
+        <li>Video of <a href="https://www.youtube.com/watch?v=p2HzZkd2A40">Justin Uberti's WebRTC session at Google I/O</a>, May 2013</li>
+        <li>Video of <a href="https://www.youtube.com/watch?v=E8C8ouiXHHk">Justin Uberti's WebRTC session at Google I/O</a>, June 2012</li>
     </ul>
 </section>
 
