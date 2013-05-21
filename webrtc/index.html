@@ -37,7 +37,7 @@
             }
             .reveal h3.link {
                 margin: 0;
-                margin-top: 35px;
+                margin-top: 40px;
             }
             .simple-image {border: none !important; box-shadow: none !important; }
             .images-list{
@@ -59,6 +59,9 @@
                 color: #807878;
                 font-size: 0.85em;
                 font-style: italic;
+            }
+            .reveal ul.double-interval li {
+                margin-top: 1em;
             }
         </style>
 
@@ -103,8 +106,9 @@
 </section>
 
 <section>
-    <h2>WebRTC Components:</h2>
-    <ul>
+    <h2>WebRTC components</h2>
+    <br>
+    <ul class="double-interval">
         <li>MediaStream (aka getUserMedia)</li>
         <li>RTCPeerConnection</li>
         <li>RTCDataChannel</li>
@@ -143,7 +147,7 @@ navigator.getUserMedia(
 </section>
 
 <section>
-    <h2>MediaStream Demos:</h2>
+    <h2>MediaStream demo</h2>
 
     <h3 class="link"><a href="http://simpl.info/getusermedia/">simpl.info/getusermedia</a></h3>
 
@@ -164,7 +168,7 @@ navigator.getUserMedia(
     <h2>RTCPeerConnection</h2>
     <p>Audio and video communication between peers</p>
     <br>
-    <ul>
+    <ul class="double-interval">
         <li>remove noise from audio and video</li>
         <li>codec handling</li>
         <li>peer to peer communication</li>
@@ -173,7 +177,6 @@ navigator.getUserMedia(
     </ul>
 
     <aside class="notes">
-        пояснити простими словами
         Компонент, який забезпечує стабільне та ефективне з’єднання між юзерами
     </aside>
 </section>
@@ -181,33 +184,51 @@ navigator.getUserMedia(
 <section>
     <h2>RTCDataChannel</h2>
     <p>API for high performance, low latency, peer-to-peer communication of arbitrary data</p>
+    <br>
+
+    <pre><code data-trim>
+var pc = new webkitRTCPeerConnection(servers,
+    {optional: [{RtpDataChannels: true}]});
+
+var dataChannel = pc.createDataChannel("sendDataChannel",
+    {reliable: false});
+
+dataChannel.onopen = onSendChannelStateChange;
+dataChannel.onclose = onSendChannelStateChange;
+
+// usage
+dataChannel.send('data');
+
+dataChannel.onmessage = function(e){
+    console.debug('Received message', e.data);
+};
+    </code></pre>
+
+    <p>Does not support reliable connection yet :(</p>
 
     <aside class="notes">
-        області застосування - ігри
-        it can be unreliable or reliable (like udp or tcp)
-        simpl.info
-        sharefest.me
+        області застосування - ігри, p2p передача файлів
     </aside>
 </section>
 
 <section>
-    <h1>See what's going on</h1>
-    <a href="chrome://webrtc-internals/">chrome://webrtc-internals/</a>
+    <h2>RTCDataChannel demo</h2>
+    <h3 class="link"><a href="http://www.simpl.info/rtcdatachannel/">simpl.info/dc</a></h3>
+    <h3 class="link"><a href="http://www.sharefest.me/">sharefest.me</a></h3>
+
+    <aside class="notes">
+        Як же здійснити р2р з’єднання?
+    </aside>
 </section>
 
-
 <section>
-    <h2>P2P Connection</h2>
+    <h2>How to establish a P2P connection?</h2>
 
     <img src="img/p2p.png" alt="" />
 
     <aside class="notes">
-        Ідея - зробити можливим передачу потокового відео/аудіо (чи інших даних) напряму між браузерами.<br />
-        Щоб зменшити об’єми даних які проходять через сервери.<br />
-
-        І все було б досить просто, аби не існувало такого поняття як NAT, а всі комп’ютери мали статичні ІР<br />
+        Все було б досить просто, аби не існувало такого поняття як NAT, а всі комп’ютери мали статичні ІР<br />
         Якщо комп’ютери за НАТом, то ситуація складніша.<br />
-        Використовувати третій хост з виділеним ІР для трансляції трафіка - поганий варіант.
     </aside>
 </section>
 
@@ -243,6 +264,7 @@ navigator.getUserMedia(
 <section>
     <h2>Interactive Connectivity Establishment (<a href="http://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a>)</h2>
     <img src="img/ice.png" alt="Finding connection candidates" />
+
     <aside class="notes">
         Протокол який визначає оптимальний шлях з’єднання
     </aside>
@@ -258,15 +280,21 @@ navigator.getUserMedia(
 </section>
 
 <section>
-    <h2>WebRTC Connection Process</h2>
+    <h2>WebRTC connection process</h2>
     <a href="img/webrtc-connection-process.png">
         <img src="img/webrtc-connection-process.png" alt="WebRTC Connection Process" />
     </a>
 </section>
 
 <section>
+    <h2>chrome://webrtc-internals</h2>
+
+    <img src="img/webrtc-internals.jpg" alt="">
+</section>
+
+<section>
     <h2>Caveats</h2>
-    <ul>
+    <ul class="double-interval">
         <li>Peers must be present with local streaming video before sending offer/answer SDP</li>
         <li>For 'Answerer'; Do not add ICE candidate until the peer generates the 'Answer SDP'</li>
         <li>Once remote media starts streaming stop adding ICE candidates</li>
@@ -288,10 +316,15 @@ navigator.getUserMedia(
             More here: <a href="https://sites.google.com/site/webrtc/interop">https://sites.google.com/site/webrtc/interop</a>
         </small>
     </p>
+
+    <aside class="notes">
+        adapter.js <br>
+        Google will give toolkits for Andriod and iOS to interoperate with WRTC in a browser
+    </aside>
 </section>
 
 <section>
-    <h2>Use SaaS for messaging</h2>
+    <h2>Use SaaS for signaling</h2>
     <ul class="images-list">
         <li><a href="http://www.pubnub.com/"><img src="img/pubnub.png" alt=""></a></li>
         <li><a href="http://pusher.com/"><img style="height: 70px;" src="img/pusher.png" alt=""></a> <br></li>
@@ -303,12 +336,12 @@ navigator.getUserMedia(
 <section>
     <h2>Learn more</h2>
     <ul>
+        <li><a href="https://www.youtube.com/watch?v=p2HzZkd2A40">Video of WebRTC session</a> at Google I/O 2013,
+            (<a href="http://io13webrtc.appspot.com/">slides</a>)</li>
         <li><a href="https://apprtc.appspot.com/">apprtc.appspot.com</a></li>
         <li><a href="https://bistri.com/">bistri.com</a></li>
         <li>Blog <a href="https://webrtc-experiment.appspot.com/">WebRTC Experiments & Demos</a> by Muaz Khan</li>
         <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">html5rocks.com/en/tutorials/webrtc/basics/</a></li>
-        <li>Video of <a href="https://www.youtube.com/watch?v=p2HzZkd2A40">Justin Uberti's WebRTC session at Google I/O</a>, May 2013</li>
-        <li>Video of <a href="https://www.youtube.com/watch?v=E8C8ouiXHHk">Justin Uberti's WebRTC session at Google I/O</a>, June 2012</li>
     </ul>
 </section>
 
