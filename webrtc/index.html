@@ -49,6 +49,7 @@
                 float: left;
                 margin: 50px;
                 display: block;
+                min-height: 110px;
             }
             .images-list img {
                 border: none !important;
@@ -87,6 +88,10 @@
             <a href="twitter.com/s_gornostal">@s_gornostal</a>
         </small>
     </p>
+
+    <aside class="notes">
+        швидко
+    </aside>
 </section>
 
 <section>
@@ -98,6 +103,8 @@
     <small>Source - <a href="https://github.com/gornostal/my-webrtc-app">https://github.com/gornostal/my-webrtc-app</a></small>
 
     <aside class="notes">
+        WebRTC - прекрасна штука<br>
+        <br>
         для того щоб це працювало, нам потрібно:<br>
         - під’єднатись до вебкамери та мікрофону<br>
         - передати відео та аудіо потоки між комп’ютерами<br>
@@ -141,7 +148,7 @@ navigator.getUserMedia(
     <small>API description on <a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN</a></small>
 
     <aside class="notes">
-        getUserMedia() дає нам відеопотік та аудіопотік, які синхронізовані між собою
+        getUserMedia() дає нам відеопотік та аудіопотік, які синхронізовані між собою<br>
         можна окремо аудіо витягувати
     </aside>
 </section>
@@ -177,7 +184,14 @@ navigator.getUserMedia(
     </ul>
 
     <aside class="notes">
-        Компонент, який забезпечує стабільне та ефективне з’єднання між юзерами
+        Компонент, який забезпечує стабільне та ефективне з’єднання<br>
+        <ul>
+            <li>видаляє шум</li>
+            <li>обирає аудіо та відео кодек</li>
+            <li>відповідає за встановлення р2р з’єднання</li>
+            <li>шифрує дані</li>
+            <li>в залежності від швидкості з’єднання, контролює якість відео та аудіо</li>
+        </ul>
     </aside>
 </section>
 
@@ -207,6 +221,8 @@ dataChannel.onmessage = function(e){
     <p>Does not support reliable connection yet :(</p>
 
     <aside class="notes">
+        потрібен для передачі довільних даних<br>
+        API схожий на WebSocket <br>
         області застосування - ігри, p2p передача файлів
     </aside>
 </section>
@@ -217,7 +233,8 @@ dataChannel.onmessage = function(e){
     <h3 class="link"><a href="http://www.sharefest.me/">sharefest.me</a></h3>
 
     <aside class="notes">
-        Як же здійснити р2р з’єднання?
+        sharefest - вміє передавати файли між браузерами<br>
+        мало б виникнути питання - то як же з’єднати браузери?
     </aside>
 </section>
 
@@ -255,8 +272,8 @@ dataChannel.onmessage = function(e){
     <small>Free STUN/TURN server <a href="http://numb.viagenie.ca/">http://numb.viagenie.ca/</a></small>
 
     <aside class="notes">
-        у 86% випадків можна встановити р2р з’єднання, в інших використовуємо relay server
-        Якщо STUN не працює то залишається тільки передавати дані через Relay Server
+        у 86% випадків можна встановити р2р з’єднання, в інших використовуємо relay server <br>
+        Якщо STUN не працює то залишається тільки передавати дані через Relay Server <br>
         А як же зрозуміти коли працює можливе р2р з’єднання, а коли ні? Для цього є ICE...
     </aside>
 </section>
@@ -266,7 +283,8 @@ dataChannel.onmessage = function(e){
     <img src="img/ice.png" alt="Finding connection candidates" />
 
     <aside class="notes">
-        Протокол який визначає оптимальний шлях з’єднання
+        визначає оптимальний метод з’єднання<br>
+        1,2,3 рівні кандидатів
     </aside>
 </section>
 
@@ -275,7 +293,10 @@ dataChannel.onmessage = function(e){
     <img src="img/data_pathways.png" alt="WebRTC data pathways">
 
     <aside class="notes">
-        Плавно повертаємось до WebRTC
+        всі можливі вузли<br>
+        через signaling канал передається контрольна інформація - назва кімнати, імена учасників, дескриптори медіа
+            потоків, ICE кандидати<br>
+        можна використовувати будь-які методи для передачі - ajax, WS, etc.
     </aside>
 </section>
 
@@ -296,10 +317,19 @@ dataChannel.onmessage = function(e){
     <h2>Caveats</h2>
     <ul class="double-interval">
         <li>Peers must be present with local streaming video before sending offer/answer SDP</li>
-        <li>For 'Answerer'; Do not add ICE candidate until the peer generates the 'Answer SDP'</li>
+        <li>Set remote SDP before adding ICE candidate</li>
         <li>Once remote media starts streaming stop adding ICE candidates</li>
         <li>Never create 'Answer SDP' until you get the 'Offer SDP'</li>
     </ul>
+
+    <aside class="notes">
+        <ul>
+            <li>додати local stream в peerConnection перед створенням запрошення чи відповіді</li>
+            <li>встановити remote sdp перед тим як додавати ICE кандидати</li>
+            <li>не треба додавати кандидати, після того як почалась передача даних</li>
+            <li>не створювати Answer SDP поки не отримали Offer SDP</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -324,22 +354,41 @@ dataChannel.onmessage = function(e){
 </section>
 
 <section>
+    <h2>Libraries</h2>
+
+    <h3 class="link"><a href="https://github.com/webRTC/webRTC.io">webRTC.io</a></h3>
+
+    <h3 class="link"><a href="http://peerjs.com/">peerjs</a></h3>
+
+    <h3 class="link"><a href="https://github.com/HenrikJoreteg/SimpleWebRTC">SimpleWebRTC</a></h3>
+
+    <h3 class="link"><a href="https://github.com/priologic/easyrtc">easyRTC</a></h3>
+</section>
+
+<section>
+    <h2>Services</h2>
+    <a href="https://vline.com/"><img class="simple-image" src="img/vline.png" alt=""></a><br><br>
+    <a href="https://bistri.com/"><img class="simple-image" src="img/bistri.png" alt=""></a>
+</section>
+
+<section>
     <h2>Use SaaS for signaling</h2>
     <ul class="images-list">
+        <li><a href="http://pusher.com/"><img style="height: 70px;" src="img/pusher.png" alt=""></a></li>
         <li><a href="http://www.pubnub.com/"><img src="img/pubnub.png" alt=""></a></li>
-        <li><a href="http://pusher.com/"><img style="height: 70px;" src="img/pusher.png" alt=""></a> <br></li>
         <li><a href="https://www.firebase.com/"><img src="img/firebase.png" alt=""></a></li>
-        <li><a href="https://fanout.io/"><img src="img/fanout.png" alt=""></a></li>
+        <li style="margin-left: 0"><a href="https://fanout.io/"><img src="img/fanout.png" alt=""></a></li>
     </ul>
 </section>
 
 <section>
     <h2>Learn more</h2>
     <ul>
+        <li><a href="http://www.webrtc.org/">webrtc.org</a></li>
         <li><a href="https://www.youtube.com/watch?v=p2HzZkd2A40">Video of WebRTC session</a> at Google I/O 2013,
             (<a href="http://io13webrtc.appspot.com/">slides</a>)</li>
-        <li><a href="https://apprtc.appspot.com/">apprtc.appspot.com</a></li>
-        <li><a href="https://bistri.com/">bistri.com</a></li>
+        <li><a href="https://apprtc.appspot.com/">apprtc.appspot.com</a>
+            (<a href="https://code.google.com/p/webrtc-samples/source/browse/trunk/apprtc/">source code</a>)</li>
         <li>Blog <a href="https://webrtc-experiment.appspot.com/">WebRTC Experiments & Demos</a> by Muaz Khan</li>
         <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">html5rocks.com/en/tutorials/webrtc/basics/</a></li>
     </ul>
