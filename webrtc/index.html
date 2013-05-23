@@ -126,7 +126,7 @@
     <h2>MediaStream</h2>
     <h3>(aka getUserMedia)</h3>
 
-    <pre><code data-trim>
+    <pre><code data-trim class="javascript">
 window.URL = window.URL || window.webkitURL;
 navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
@@ -200,10 +200,11 @@ navigator.getUserMedia(
     <p>API for high performance, low latency, peer-to-peer communication of arbitrary data</p>
     <br>
 
-    <pre><code data-trim>
+    <pre><code data-trim class="javascript">
 var pc = new webkitRTCPeerConnection(servers,
     {optional: [{RtpDataChannels: true}]});
 
+// only unreliable data channels are supported in Chrome
 var dataChannel = pc.createDataChannel("sendDataChannel",
     {reliable: false});
 
@@ -217,8 +218,6 @@ dataChannel.onmessage = function(e){
     console.debug('Received message', e.data);
 };
     </code></pre>
-
-    <p>Does not support reliable connection yet :(</p>
 
     <aside class="notes">
         потрібен для передачі довільних даних<br>
@@ -344,6 +343,11 @@ dataChannel.onmessage = function(e){
     <p>
         <small>
             More here: <a href="https://sites.google.com/site/webrtc/interop">https://sites.google.com/site/webrtc/interop</a>
+        </small>
+    </p>
+    <p>
+        <small>
+            <a href="https://github.com/muaz-khan/WebRTC-Experiment/issues/1"><b>@muaz-khan</b> explains why he couldn't make it work</a>
         </small>
     </p>
 
