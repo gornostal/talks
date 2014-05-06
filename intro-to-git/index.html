@@ -26,9 +26,21 @@
 		}
 	</script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+	<style>
+		.workflow div {
+			margin-bottom: 20px;
+			clear: both;
+			text-align: left;
+		}
+		.workflow div b {
+			float: right;
+			display: inline-block;
+		}
+	</style>
 </head>
 
 <div class="reveal">
@@ -280,6 +292,32 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 		</section>
 
 
+
+
+		<section>
+			<h2>Найпростіший спосіб використання</h2>
+			<br>
+
+			<div class="workflow">
+				<div class="fragment">Змінити файли <b>vim / emacs / etc</b></div>
+				<div class="fragment">Додати файли в staging area <b>git add (file)</b></div>
+				<div class="fragment">Переглянути зміни <b>git status / git diff</b></div>
+				<div class="fragment">Створити коміт <b>git commit</b></div>
+			</div>
+		</section>
+
+
+
+
+		<section>
+			<h2>Ще простіший спосіб</h2>
+			<br>
+
+			<div class="workflow">
+				<div class="fragment">Змінити файли <b>vim / emacs / etc</b></div>
+				<div class="fragment">Створити коміт <b>git commit -a</b></div>
+			</div>
+		</section>
 
 
 	</div>
