@@ -44,7 +44,7 @@ body {
   list-style: none;
   margin-left: 0;
 }
-.reveal li:before {
+.reveal ul li:before {
   content: "✓";
   display: block;
   float: left;
