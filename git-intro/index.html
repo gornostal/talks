@@ -1,50 +1,50 @@
 <!doctype html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<title>Введення в Git</title>
+    <title>Введення в Git</title>
 
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-	<!-- For syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-	<script>
-		if( window.location.search.match( /print-pdf/gi ) ) {
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = 'css/print/pdf.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		}
-	</script>
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
 
-	<!--[if lt IE 9]>
-	<script src="lib/js/html5shiv.js"></script>
-	<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
 
-	<style>
-		.workflow div {
-			margin-bottom: 20px;
-			clear: both;
-			text-align: left;
-		}
-		.workflow div b {
-			float: right;
-			display: inline-block;
-		}
+    <style>
+        .workflow div {
+            margin-bottom: 20px;
+            clear: both;
+            text-align: left;
+        }
+        .workflow div b {
+            float: right;
+            display: inline-block;
+        }
 
-		.reveal pre {
-			font-size: 24px;
-		}
-	</style>
+        .reveal pre {
+            font-size: 24px;
+        }
+    </style>
 </head>
 
 <!--
@@ -58,189 +58,195 @@ Notes:
 
 <div class="reveal">
 
-	<div class="slides">
+    <div class="slides">
 
 
 
-		<section class="" data-id="689be90aa3dac6b35e5ede2dec5c6961">
-			<h1>
-				<span>Введення в Git</span>
-				<br>
-			</h1>
-			<p>
-				<font size="5">
-					<span>
-						<b>Олександр Горносталь</b>
-					</span>
-				</font>
-			</p>
-		</section>
+        <section class="" data-id="689be90aa3dac6b35e5ede2dec5c6961">
+            <h1>
+                <span>Введення в Git</span>
+                <br>
+            </h1>
+            <p>
+                <font size="5">
+                    <span>
+                        <b>Олександр Горносталь</b>
+                    </span>
+                </font>
+            </p>
+        </section>
 
 
 
-		<section class="" data-id="216de90750791fa107d1b0e843523363">
-			<h2>
-				<img src="http://cogniance.com/sites/all/themes/cogniance/logo.png" style="font-size: 53.805px; font-weight: bold; width: 290px; height: 125.58404558404558px; max-height: none; max-width: none;">
-				<br>
-			</h2>
-		</section>
+        <section class="" data-id="216de90750791fa107d1b0e843523363">
+            <h2>
+                <img src="http://cogniance.com/sites/all/themes/cogniance/logo.png" style="font-size: 53.805px; font-weight: bold; width: 290px; height: 125.58404558404558px; max-height: none; max-width: none;">
+                <br>
+            </h2>
+        </section>
+
+
+        <section>
+            <h2>Що таке система керування версіями?</h2>
+        </section>
+
+
+        <section class="" data-id="c2da086eb5d1390362ef5134c6612410">
+            <h2>Терміни</h2>
+            <p>
+                <br>
+            </p>
+            <p>hash code</p>
+            <p>branch</p>
+            <p>commit</p>
+            <p>diff</p>
+            <p>merge</p>
+            <p>snapshot</p>
+        </section>
 
 
 
-		<section class="" data-id="c2da086eb5d1390362ef5134c6612410">
-			<h2>Основні поняття</h2>
-			<p>
-				<br>
-			</p>
-			<p>branch</p>
-			<p>commit</p>
-			<p>diff</p>
-			<p>merge</p>
-		</section>
+        <section class="" data-id="dce9d97f4632c4755f480cb87b20937e">
+            <h2>
+                <img src="images/branches.png">
+                <br>
+            </h2>
+        </section>
 
 
 
-		<section class="" data-id="dce9d97f4632c4755f480cb87b20937e">
-			<h2>
-				<img src="images/branches.png">
-				<br>
-			</h2>
-		</section>
-
-
-
-		<section>
-			<h2>Чому git?</h2>
-		</section>
+        <section>
+            <h2>Чому git?</h2>
+        </section>
 
 
 
 
-		<section>
-			Розподілені |  Централізовані
-		</section>
+        <section>
+            Розподілені |  Централізовані
+        </section>
 
 
 
 
-		<section class="" data-id="d6810a90a6711046d847dada9a1ac338">
-			<h2>
-				<img src="images/CVCS.png">
-				<br>
-			</h2>
-		</section>
+        <section class="" data-id="d6810a90a6711046d847dada9a1ac338">
+            <h2>
+                <img src="images/CVCS.png">
+                <br>
+            </h2>
+        </section>
 
 
 
-		<section class="" data-id="a379a9c569a009b39a297a9caa338a41">
-			<p>
-				<img src="images/DVCS.png" style="width: 491.0858995137763px; height: 600px; max-height: none; max-width: none;">
-				<br>
-			</p>
-		</section>
+        <section class="" data-id="a379a9c569a009b39a297a9caa338a41">
+            <p>
+                <img src="images/DVCS.png" style="width: 491.0858995137763px; height: 600px; max-height: none; max-width: none;">
+                <br>
+            </p>
+        </section>
 
 
 
-		<section class="" data-id="753c96793c8a785dc51e9eb76a6c18e2">
-			<h2>Переваги розподілених систем</h2>
-			<div>
-				<br>
-			</div>
-			<p>
-			</p>
-			<ul>
-				<li class="fragment" data-fragment-index="0">швидкість операцій</li>
-				<li class="fragment" data-fragment-index="1">можна працювати офлайн</li>
-				<li class="fragment" data-fragment-index="2">кожен має свого роду бекап проекту</li>
-			</ul>
-		</section>
+        <section class="" data-id="753c96793c8a785dc51e9eb76a6c18e2">
+            <h2>Переваги розподілених систем</h2>
+            <div>
+                <br>
+            </div>
+            <p>
+            </p>
+            <ul>
+                <li class="fragment" data-fragment-index="0">швидкість операцій</li>
+                <li class="fragment" data-fragment-index="1">можна працювати офлайн</li>
+                <li class="fragment" data-fragment-index="2">кожен має свого роду бекап проекту</li>
+            </ul>
+        </section>
 
 
 
-		<section class="" data-id="8f7d25cb9bcb22b726f8dbf04e9b37ff">
-			<h2>Офлайн можна</h2>
-			<div>
-				<br>
-			</div>
-			<div>
-				<ul>
-					<li class="fragment" data-fragment-index="0">переглядати diff</li>
-					<li class="fragment" data-fragment-index="2">робити commit</li>
-					<li class="fragment" data-fragment-index="3">переглядати історію комітів</li>
-					<li class="fragment" data-fragment-index="4">переключатись між гілками</li>
-					<li class="fragment" data-fragment-index="5">створювати та зливати (merge) гілки</li>
-					<li class="fragment" data-fragment-index="6">знайти будь-яку попередню версію файла</li>
-				</ul>
-			</div>
-		</section>
+        <section class="" data-id="8f7d25cb9bcb22b726f8dbf04e9b37ff">
+            <h2>Офлайн можна</h2>
+            <div>
+                <br>
+            </div>
+            <div>
+                <ul>
+                    <li class="fragment" data-fragment-index="0">переглядати diff</li>
+                    <li class="fragment" data-fragment-index="2">робити commit</li>
+                    <li class="fragment" data-fragment-index="3">переглядати історію комітів</li>
+                    <li class="fragment" data-fragment-index="4">переключатись між гілками</li>
+                    <li class="fragment" data-fragment-index="5">створювати та зливати (merge) гілки</li>
+                    <li class="fragment" data-fragment-index="6">знайти будь-яку попередню версію файла</li>
+                </ul>
+            </div>
+        </section>
 
 
 
-		<section>
-			<h2>То чому ж git?</h2>
-			<br>
-			<p class="fragment"><a href="http://thkoch2001.github.io/whygitisbetter/">thkoch2001.github.io/whygitisbetter/</a></p>
+        <section>
+            <h2>То чому ж git?</h2>
+            <br>
+            <p class="fragment"><a href="http://thkoch2001.github.io/whygitisbetter/">thkoch2001.github.io/whygitisbetter/</a></p>
 
-			<aside class="notes">
-				популярність; Github
-			</aside>
-		</section>
-
-
-
-		<section>
-			<h2>Як встановити?</h2>
-			<br>
-
-			<table cellspacing="30" style="margin: 0 auto">
-				<tr class="fragment">
-					<td style="color: #666; text-align: right">Debian based Linux</td>
-					<td>$ apt-get install git</td>
-				</tr>
-				<tr class="fragment">
-					<td style="color: #666; text-align: right">Windows</td>
-					<td><a href="http://msysgit.github.com/">msysgit.github.com</a></td>
-				</tr>
-				<tr class="fragment">
-					<td style="color: #666; text-align: right">Source code</td>
-					<td><a href="http://git-scm.com/">git-scm.com</a></td>
-				</tr>
-			</table>
-		</section>
+            <aside class="notes">
+                популярність; Github
+            </aside>
+        </section>
 
 
 
-		<section class="" data-id="8a93d7eefbd262a16efaf90d87c78f37">
-			<h2>Перші кроки</h2>
-		</section>
+        <section>
+            <h2>Як встановити?</h2>
+            <br>
+
+            <table cellspacing="30" style="margin: 0 auto">
+                <tr class="fragment">
+                    <td style="color: #666; text-align: right">Debian based Linux</td>
+                    <td>$ apt-get install git</td>
+                </tr>
+                <tr class="fragment">
+                    <td style="color: #666; text-align: right">Windows</td>
+                    <td><a href="http://msysgit.github.com/">msysgit.github.com</a></td>
+                </tr>
+                <tr class="fragment">
+                    <td style="color: #666; text-align: right">Source code</td>
+                    <td><a href="http://git-scm.com/">git-scm.com</a></td>
+                </tr>
+            </table>
+        </section>
 
 
 
-		<section class="" data-id="e562f7a3bd1ba0330e734819738e5348">
-			<pre><font style="font-size: 24px;">$ git config --global user.name "Aleksandr Gornostal"
+        <section class="" data-id="8a93d7eefbd262a16efaf90d87c78f37">
+            <h2>Перші кроки</h2>
+        </section>
+
+
+
+        <section class="" data-id="e562f7a3bd1ba0330e734819738e5348">
+            <pre><font style="font-size: 24px;">$ git config --global user.name "Aleksandr Gornostal"
 $ git config --global user.email "sanya.gornostal@gmail.com"</font>        </pre>
-		</section>
+        </section>
 
 
 
-		<section class="" data-id="1d2f032d5e4667109ec61d27991b6805">
-			<h2>Створення репозиторію</h2>
-		</section>
+        <section class="" data-id="1d2f032d5e4667109ec61d27991b6805">
+            <h2>Створення репозиторію</h2>
+        </section>
 
 
 
-		<section class="" data-id="f71103b9c88cebfb51a1b7a5c6cc4221">
-			<pre style="box-shadow: none; font-size: 26px;">$ touch hello_world.js
+        <section class="" data-id="f71103b9c88cebfb51a1b7a5c6cc4221">
+            <pre style="box-shadow: none; font-size: 26px;">$ touch hello_world.js
 $ git init
-			</pre>
+            </pre>
 
 
-		</section>
+        </section>
 
 
 
-		<section class="" data-id="640f1cb95274690fc6e8a8600647d828">
-			<pre style="box-shadow: none; line-height: 1.2">$ tree -a
+        <section class="" data-id="640f1cb95274690fc6e8a8600647d828">
+            <pre style="box-shadow: none; line-height: 1.2">$ tree -a
 .
 ├── .git
 │&nbsp;&nbsp; ├── branches
@@ -264,24 +270,24 @@ $ git init
 
 10 directories, 13 files</pre>
 
-			<aside class="notes">
-				Вся база даних в каталозі .git
-			</aside>
-		</section>
+            <aside class="notes">
+                Вся база даних в каталозі .git
+            </aside>
+        </section>
 
 
 
-		<section class="" data-id="60ffa4d045cb7c02c7fbcb6a037b19df">
-			<pre style="box-shadow: none; font-size: 26px;">$ touch hello_world.js
+        <section class="" data-id="60ffa4d045cb7c02c7fbcb6a037b19df">
+            <pre style="box-shadow: none; font-size: 26px;">$ touch hello_world.js
 $ git init
 $ git add .</pre>
-		</section>
+        </section>
 
 
 
-		<section class="" data-id="410cb1e976a26fd8baf6601c7ba287b0">
-			<div>
-				<pre style="box-shadow: none; max-height: 500px; overflow-y: auto; line-height: 1.2">$ tree -a
+        <section class="" data-id="410cb1e976a26fd8baf6601c7ba287b0">
+            <div>
+                <pre style="box-shadow: none; max-height: 500px; overflow-y: auto; line-height: 1.2">$ tree -a
 .
 ├── .git
 │&nbsp;&nbsp; ├── branches
@@ -317,66 +323,83 @@ $ git add .</pre>
 └── hello_world.js
 
 16 directories, 21 files</pre>
-			</div>
-			<br>
+            </div>
+            <br>
 
 
 
-		</section>
+        </section>
 
 
 
-		<section class="" data-id="c50091618602ad1f29f1511d14fde580">
-			<h2>Клонування репозиторію</h2>
-		</section>
+        <section class="" data-id="c50091618602ad1f29f1511d14fde580">
+            <h2>Клонування репозиторію</h2>
+        </section>
 
 
 
-		<section class="" data-id="b3220218d22d387ef9056afabb2d185c">
-			<pre style="box-shadow: none; font-size: 26px;">$ git clone git@github.com:jquery/jquery.git</pre>
-			<pre style="box-shadow: none; font-size: 26px;" class="fragment" data-fragment-index="0">Cloning into 'jquery'...
+        <section class="" data-id="b3220218d22d387ef9056afabb2d185c">
+            <pre style="box-shadow: none; font-size: 26px;">$ git clone git@github.com:jquery/jquery.git</pre>
+            <pre style="box-shadow: none; font-size: 26px;" class="fragment" data-fragment-index="0">Cloning into 'jquery'...
 remote: Reusing existing pack: 33399, done.
 remote: Total 33399 (delta 0), reused 0 (delta 0)
 Receiving objects: 100% (33399/33399), 19.79 MiB | 1.47 MiB/s, done.
 Resolving deltas: 100% (23682/23682), done.</pre>
 
-		</section>
+        </section>
 
 
 
 
-		<section>
-			<h2>Найпростіший спосіб використання</h2>
-			<br>
+        <section>
+            <h2>Найпростіший спосіб використання</h2>
+            <br>
 
-			<div class="workflow">
-				<div class="fragment">Змінити файли <b>vim / emacs / etc</b></div>
-				<div class="fragment">Додати файли в staging area <b>git add (file)</b></div>
-				<div class="fragment">Переглянути зміни <b>git status / git diff</b></div>
-				<div class="fragment">Створити коміт <b>git commit</b></div>
-			</div>
-		</section>
-
-
+            <div class="workflow">
+                <div class="fragment">Змінити файли <b>vim / emacs / etc</b></div>
+                <div class="fragment">Додати файли в staging area <b>git add (file)</b></div>
+                <div class="fragment">Переглянути зміни <b>git status / git diff</b></div>
+                <div class="fragment">Створити коміт <b>git commit</b></div>
+            </div>
+        </section>
 
 
-		<section>
-			<h2>Ще простіший спосіб</h2>
-			<br>
-
-			<div class="workflow">
-				<div class="fragment">Змінити файли <b>vim / emacs / etc</b></div>
-				<div class="fragment">Створити коміт <b>git commit -a</b></div>
-			</div>
-		</section>
 
 
-		<section>
-			rethink VCSs
-		</section>
+        <section>
+            <h2>Ще простіший спосіб</h2>
+            <br>
+
+            <div class="workflow">
+                <div class="fragment">Змінити файли <b>vim / emacs / etc</b></div>
+                <div class="fragment">Створити коміт <b>git commit -a</b></div>
+            </div>
+        </section>
 
 
-	</div>
+
+
+        <section>
+            <h2>Rethink Source Control Management</h2>
+        </section>
+
+
+
+
+        <section>
+            commit
+              |
+             tree
+             /  \
+           blob  tree
+                 /  \
+              blob  blob
+
+        show how hashes change
+        </section>
+
+
+    </div>
 
 </div>
 
@@ -388,27 +411,27 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-	controls: false,
-	progress: true,
-	history: true,
-	center: true,
+    controls: false,
+    progress: true,
+    history: true,
+    center: true,
 
-	theme: Reveal.getQueryHash().theme || 'sky', // available themes are in /css/theme
-	transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+    theme: Reveal.getQueryHash().theme || 'sky', // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 
-	// Parallax scrolling
-	// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-	// parallaxBackgroundSize: '2100px 900px',
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
 
-	// Optional libraries used to extend on reveal.js
-	dependencies: [
-	{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-	{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-	{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-	// { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-	// { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-	{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-	]
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    // { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    // { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
 });
 
 </script>
