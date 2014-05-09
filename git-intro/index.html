@@ -44,6 +44,14 @@
         .reveal pre {
             font-size: 24px;
         }
+
+        .reveal .hl {
+            border: 2px solid #414141;
+            padding: 3px;
+            background: #DCFADC;
+            border-radius: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -387,17 +395,169 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
 
         <section>
-            commit
-              |
-             tree
-             /  \
-           blob  tree
-                 /  \
-              blob  blob
+            <pre>
 
-        show how hashes change
+                    commit
+                      |
+                     tree
+                     /  \
+                   blob  tree
+                         /  \
+                      blob  blob
+
+                show how hashes change
+            </pre>
+
+            <aside class="notes">
+                Demo
+            </aside>
         </section>
 
+
+
+
+        <section>
+            <h2>Гілкування та злиття</h2>
+        </section>
+
+
+
+        <section>
+            <h2>Гілки (branches) &ndash; посилання на хеш коміта</h2>
+        </section>
+
+
+        <section>
+            <pre>$ find .git/refs</pre>
+            <pre class="fragment">.git/refs
+.git/refs/heads
+.git/refs/heads/master
+.git/refs/heads/i18n</pre>
+            <br>
+            <pre style="visibility: hidden">$ cat .git/refs/heads/master
+98ca909dc9e38af91565082bdf93577ff555489e</pre>
+        </section>
+
+
+        <section>
+            <pre>$ find .git/refs</pre>
+            <pre>.git/refs
+.git/refs/heads
+<div class="hl">.git/refs/heads/master</div>
+.git/refs/heads/i18n</pre>
+            <br>
+            <pre class="fragment">$ cat .git/refs/heads/master
+98ca909dc9e38af91565082bdf93577ff555489e</pre>
+        </section>
+
+
+
+
+        <section>
+            <h2>Злиття (merge)</h2>
+        </section>
+
+
+
+        <section>
+            <h2>Швидко вперед</h2>
+            <br>
+            <div class=fragment>
+                <p>або</p>
+                <h2>Fast-forward merge</h2>
+            </div>
+        </section>
+
+
+
+        <section>
+            <h2>Не так швидко вперед</h2>
+            <br>
+            <div class=fragment>
+                <p>або</p>
+                <h2>non fast-forward merge</h2>
+            </div>
+        </section>
+
+
+
+
+        <section>
+            <h2>Конфлікти при злитті</h2>
+        </section>
+
+
+
+        <section>
+            <pre>$ git merge iss53
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.</pre>
+        </section>
+
+
+
+        <section>
+            <pre>$ git merge iss53
+Auto-merging index.html
+<div class="hl">CONFLICT (content): Merge conflict in index.html</div>
+Automatic merge failed; fix conflicts and then commit the result.</pre>
+        </section>
+
+
+
+
+        <section>
+            <h2>Що робити?</h2>
+            <br>
+
+            <div class="workflow">
+                <div class="fragment">Виправити конфлікт <b>вручну / git mergetool</b></div>
+                <div class="fragment">Додати файли в staging area <b>git add (file)</b></div>
+                <div class="fragment">Створити коміт <b>git commit</b></div>
+            </div>
+        </section>
+
+
+
+        <section>
+            <h2>Робота в команді</h2>
+        </section>
+
+
+
+
+        <section>
+            <h2>Remotes</h2>
+        </section>
+
+
+
+        <section>
+            <h2 style="font-family: monospace; font-size: 38px">$ git push origin master</h2>
+        </section>
+
+
+
+
+        <section>
+            <h2 style="font-family: monospace; font-size: 38px">$ git fetch</h2>
+        </section>
+
+
+
+        <section>
+            <h2 style="font-family: monospace; font-size: 38px">$ git pull</h2>
+            <br>
+            <h3 class="fragment" style="font-family: monospace; font-size: 30px">pull == fetch + merge</h3>
+        </section>
+
+
+
+
+        <section>
+            <h2 style="font-family: monospace; font-size: 38px">$ git log</h2>
+        </section>
 
     </div>
 
