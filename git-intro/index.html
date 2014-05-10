@@ -45,12 +45,15 @@
             font-size: 24px;
         }
 
-        .reveal .hl {
-            border: 2px solid #414141;
-            padding: 3px;
+        .reveal .hl,
+        .reveal .slides section .hlf.fragment.visible {
+            outline: 1px solid #ccc;
             background: #DCFADC;
             border-radius: 5px;
+        }
+        .reveal .slides section .hlf.fragment {
             display: inline-block;
+            opacity: 1;
         }
     </style>
 </head>
@@ -293,48 +296,37 @@ $ git add .</pre>
 
 
 
-        <section class="" data-id="410cb1e976a26fd8baf6601c7ba287b0">
+        <section>
             <div>
-                <pre style="box-shadow: none; max-height: 500px; overflow-y: auto; line-height: 1.2">$ tree -a
+                <pre style="box-shadow: none; overflow-y: auto; line-height: 1.2">$ tree -a
 .
 ├── .git
-│&nbsp;&nbsp; ├── branches
-│&nbsp;&nbsp; ├── COMMIT_EDITMSG
-│&nbsp;&nbsp; ├── config
-│&nbsp;&nbsp; ├── description
-│&nbsp;&nbsp; ├── HEAD
-│&nbsp;&nbsp; ├── hooks
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── applypatch-msg.sample
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ...
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── update.sample
-│&nbsp;&nbsp; ├── index
-│&nbsp;&nbsp; ├── info
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── exclude
-│&nbsp;&nbsp; ├── logs
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── HEAD
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── refs
-│&nbsp;&nbsp; │&nbsp;&nbsp;     └── heads
-│&nbsp;&nbsp; │&nbsp;&nbsp;         └── master
-│&nbsp;&nbsp; ├── objects
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── ad
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── 9a27de954d7ae76f122db7d0a51556390e9b9d
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── e6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── f6
-│&nbsp;&nbsp; │&nbsp;&nbsp; │&nbsp;&nbsp; └── e463f25da129be72316280c247520316850865
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── info
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── pack
-│&nbsp;&nbsp; └── refs
-│&nbsp;&nbsp;     ├── heads
-│&nbsp;&nbsp;     │&nbsp;&nbsp; └── master
-│&nbsp;&nbsp;     └── tags
+│   ├── branches
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── description
+│   ├── HEAD
+...
+│   ├── objects
+<div class="hlf fragment">│   │   ├── ad
+│   │   │   └── 9a27de954d7ae76f122db7d0a51556390e9b9d
+│   │   ├── e6
+│   │   │   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+│   │   ├── f6
+│   │   │   └── e463f25da129be72316280c247520316850865
+</div>
+│   │   ├── info
+│   │   └── pack
+│   └── refs
+│       ├── heads
+<div class="hlf fragment">│       │   └── master
+</div>
+│       └── tags
 └── hello_world.js
 
 16 directories, 21 files</pre>
             </div>
             <br>
-
-
 
         </section>
 
@@ -431,20 +423,9 @@ Resolving deltas: 100% (23682/23682), done.</pre>
             <pre>$ find .git/refs</pre>
             <pre class="fragment">.git/refs
 .git/refs/heads
-.git/refs/heads/master
-.git/refs/heads/i18n</pre>
-            <br>
-            <pre style="visibility: hidden">$ cat .git/refs/heads/master
-98ca909dc9e38af91565082bdf93577ff555489e</pre>
-        </section>
-
-
-        <section>
-            <pre>$ find .git/refs</pre>
-            <pre>.git/refs
-.git/refs/heads
-<div class="hl">.git/refs/heads/master</div>
-.git/refs/heads/i18n</pre>
+<div class="hlf fragment">.git/refs/heads/master</div>
+.git/refs/heads/i18n
+</pre>
             <br>
             <pre class="fragment">$ cat .git/refs/heads/master
 98ca909dc9e38af91565082bdf93577ff555489e</pre>
@@ -460,23 +441,13 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
 
         <section>
-            <h2>Швидко вперед</h2>
-            <br>
-            <div class=fragment>
-                <p>або</p>
-                <h2>Fast-forward merge</h2>
-            </div>
+            <h2>fast-forward merge</h2>
         </section>
 
 
 
         <section>
-            <h2>Не так швидко вперед</h2>
-            <br>
-            <div class=fragment>
-                <p>або</p>
-                <h2>non fast-forward merge</h2>
-            </div>
+            <h2>non fast-forward merge</h2>
         </section>
 
 
@@ -488,19 +459,11 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
 
 
-        <section>
-            <pre>$ git merge iss53
-Auto-merging index.html
-CONFLICT (content): Merge conflict in index.html
-Automatic merge failed; fix conflicts and then commit the result.</pre>
-        </section>
-
-
 
         <section>
             <pre>$ git merge iss53
 Auto-merging index.html
-<div class="hl">CONFLICT (content): Merge conflict in index.html</div>
+<div class="hlf fragment">CONFLICT (content): Merge conflict in index.html</div>
 Automatic merge failed; fix conflicts and then commit the result.</pre>
         </section>
 
