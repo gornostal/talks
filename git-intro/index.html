@@ -50,6 +50,7 @@
             outline: 1px solid #ccc;
             background: #DCFADC;
             border-radius: 5px;
+            display: inline-block;
         }
         .reveal .slides section .hlf.fragment {
             display: inline-block;
@@ -433,6 +434,73 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
 
 
+        <section>
+            <h2>Створення гілки</h2>
+            <br>
+
+            <pre>$ git branch new-feature <span style="opacity: 0.5">[source-branch]</span>
+$ git checkout new-feature</pre>
+        </section>
+
+
+
+        <section>
+            <pre>$ git checkout -b new-feature</pre>
+        </section>
+
+
+
+
+        <section>
+            <h2 style="font-family: monospace; font-size: 38px">git checkout</h2>
+        </section>
+
+
+
+
+        <section>
+            <pre>
+                HEAD->master-> 12343
+                                 |
+                               34454   30ac03 <-dev
+                                 |   /
+                               4fc35
+            </pre>
+        </section>
+
+
+        <section>
+            <pre>$ git checkout dev</pre>
+        </section>
+
+
+        <section>
+            <pre>
+                      master-> 12343
+                                 |
+                               34454   30ac03 <-dev<-HEAD
+                                 |   /
+                               4fc35
+            </pre>
+        </section>
+
+
+
+
+        <section>
+            <h2>Повернути зміни в файлі</h2>
+            <pre>git checkout -- index.html </pre>
+        </section>
+
+
+
+
+        <section>
+            <h2>Взяти файл з іншого коміту</h2>
+            <pre>git checkout 10f09ac9d -- index.html </pre>
+        </section>
+
+
 
         <section>
             <h2>Злиття (merge)</h2>
@@ -446,9 +514,50 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
 
 
+
+        <section>
+            slide 6
+        </section>
+
+
+
+
+
+        <section>
+            <pre>$ git checkout master
+$ git merge topic</pre>
+        </section>
+
+
+
+
+        <section>
+            slide 6
+        </section>
+
+
+
+
         <section>
             <h2>non fast-forward merge</h2>
         </section>
+
+
+
+
+
+        <section>
+            slide 7
+        </section>
+
+
+
+
+
+        <section>
+            slide 7
+        </section>
+
 
 
 
@@ -461,7 +570,7 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
 
         <section>
-            <pre>$ git merge iss53
+            <pre>$ git merge topic
 Auto-merging index.html
 <div class="hlf fragment">CONFLICT (content): Merge conflict in index.html</div>
 Automatic merge failed; fix conflicts and then commit the result.</pre>
@@ -480,6 +589,7 @@ Automatic merge failed; fix conflicts and then commit the result.</pre>
                 <div class="fragment">Створити коміт <b>git commit</b></div>
             </div>
         </section>
+
 
 
 
