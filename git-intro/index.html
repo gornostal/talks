@@ -347,6 +347,10 @@ remote: Total 33399 (delta 0), reused 0 (delta 0)
 Receiving objects: 100% (33399/33399), 19.79 MiB | 1.47 MiB/s, done.
 Resolving deltas: 100% (23682/23682), done.</pre>
 
+
+            <aside class="notes">
+                - Коміти не йдуть на сервер
+            </aside>
         </section>
 
 
@@ -362,6 +366,11 @@ Resolving deltas: 100% (23682/23682), done.</pre>
                 <div class="fragment">Переглянути зміни <b>git status / git diff</b></div>
                 <div class="fragment">Створити коміт <b>git commit</b></div>
             </div>
+
+            <aside class="notes">
+                - why git add? stage section of a file
+                - git commit doesn't look in the working directory by default
+            </aside>
         </section>
 
 
@@ -378,6 +387,20 @@ Resolving deltas: 100% (23682/23682), done.</pre>
         </section>
 
 
+        <section>
+            <h2>git commit</h2>
+        </section>
+
+
+        <section>
+            <pre>$ git commit
+Created commit <span class="hlf fragment">77d3001</span>: descriptive commit message
+2 files changed, 4 insertions(+), 2 deletions(-)</pre>
+
+        <aside class="notes">
+            this is your version number
+        </aside>
+        </section>
 
 
         <section>
@@ -417,6 +440,20 @@ Resolving deltas: 100% (23682/23682), done.</pre>
 
         <section>
             <h2>Гілки (branches) &ndash; посилання на хеш коміта</h2>
+
+            <aside class="notes">
+                lightweight movable pointers
+                useful for backup pointers
+            </aside>
+        </section>
+
+
+        <section>
+            branches.png
+
+            <aside class="notes">
+                head is a symbolic ref to your current branch
+            </aside>
         </section>
 
 
@@ -574,6 +611,11 @@ $ git merge topic</pre>
 Auto-merging index.html
 <div class="hlf fragment">CONFLICT (content): Merge conflict in index.html</div>
 Automatic merge failed; fix conflicts and then commit the result.</pre>
+
+
+            <aside class="notes">
+                it'll stop before final commit
+            </aside>
         </section>
 
 
@@ -602,7 +644,29 @@ Automatic merge failed; fix conflicts and then commit the result.</pre>
 
         <section>
             <h2>Remotes</h2>
+
+            <aside class="notes">
+                - no concept of a server
+            </aside>
         </section>
+
+
+
+
+
+
+        <section>
+            <pre>$ git remote add [NAME] [URL]</pre>
+        </section>
+
+
+
+
+        <section>
+            <pre>$ git remote add origin https://github.com/gornostal/talks.git</pre>
+        </section>
+
+
 
 
 
@@ -623,6 +687,10 @@ Automatic merge failed; fix conflicts and then commit the result.</pre>
             <h2 style="font-family: monospace; font-size: 38px">git pull</h2>
             <br>
             <h3 class="fragment" style="font-family: monospace; font-size: 30px">pull == fetch + merge</h3>
+
+            <aside class="notes">
+                Demo
+            </aside>
         </section>
 
 
