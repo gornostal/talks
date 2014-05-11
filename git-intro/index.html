@@ -100,6 +100,11 @@ Notes:
                     </span>
                 </font>
             </p>
+
+            <aside class="notes">
+                Agenda <br>
+                about me
+            </aside>
         </section>
 
 
@@ -510,18 +515,15 @@ $ git commit -am 'updated logo'
 
         <section>
             <h2>Гілки (branches) &ndash; посилання на хеш коміта</h2>
-
-            <aside class="notes">
-                - бекапи
-            </aside>
         </section>
 
 
         <section>
-            branches.png
+            <img src="images/head.png" alt="">
 
             <aside class="notes">
-                HEAD - посилання на поточну гілку (refs/heads/master)
+                - бекапи <br>
+                - HEAD
             </aside>
         </section>
 
@@ -548,22 +550,6 @@ ref: refs/heads/master</pre>
 
 
 
-        <section>
-            <h2>Створення гілки</h2>
-            <br>
-
-            <pre>$ git branch new-feature <span style="opacity: 0.5">[source-branch]</span>
-$ git checkout new-feature</pre>
-        </section>
-
-
-
-        <section>
-            <pre>$ git checkout -b new-feature</pre>
-        </section>
-
-
-
 
         <section>
             <h2 class="monohead">git checkout</h2>
@@ -580,14 +566,9 @@ $ git checkout new-feature</pre>
 
 
         <section>
-            <pre>
-                HEAD->master-> 12343
-                                 |
-                               34454   30ac03 <-dev
-                                 |   /
-                               4fc35
-            </pre>
+            <img src="images/head.png" alt="">
         </section>
+
 
 
         <section>
@@ -596,13 +577,7 @@ $ git checkout new-feature</pre>
 
 
         <section>
-            <pre>
-                      master-> 12343
-                                 |
-                               34454   30ac03 <-dev<-HEAD
-                                 |   /
-                               4fc35
-            </pre>
+            <img src="images/head-dev.png" alt="">
 
             <aside class="notes">
                 Інші особливості git checkout
@@ -626,6 +601,31 @@ $ git checkout new-feature</pre>
             <br><br>
             <h2 class="monohead">git checkout <span class="hlcf fragment">ac84f5</span> -- index.html </h2>
         </section>
+
+
+
+        <section>
+            <h2>Створення гілки</h2>
+            <br>
+
+            <pre>$ git branch new-feature master</span>
+$ git checkout new-feature</pre>
+        </section>
+
+
+
+
+        <section>
+            <pre>$ git checkout <b>-b</b> new-feature master</pre>
+        </section>
+
+
+
+
+        <section>
+            <img src="images/head-new-feature.png" alt="">
+        </section>
+
 
 
 
