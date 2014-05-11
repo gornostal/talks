@@ -758,6 +758,47 @@ Automatic merge failed; fix conflicts and then commit the result.</pre>
             <h2 class="monohead">git log</h2>
         </section>
 
+
+
+
+        <section>
+            <h3>Що є в <span style="font-family: monospace; color: #44f">branch-a</span> чого немає в <span style="font-family: monospace; color: #44f">master</span>?</h3>
+            <br>
+
+            <h2 class="monohead">git log branch-a <span class="hlf fragment">^</span>master</h2>
+        </section>
+
+
+
+        <section>
+            <h3>Що піде на сервер?</h3>
+            <br>
+
+            <h2 class="monohead">git log branch-b ^origin/branch-b</h2>
+            <br>
+            <h2 class="monohead fragment">git log origin/branch-b..<span style="opacity: .4">branch-b</span></h2>
+        </section>
+
+
+        <section>
+            branch-a selected
+        </section>
+
+
+        <section>
+            master and branch-a selected
+        </section>
+
+
+
+        <section>
+            <h3>подивитись історію файла</h3>
+            <br>
+
+            <h2 class="monohead">git log -p -- filename</h2>
+        </section>
+
+
     </div>
 
 </div>
