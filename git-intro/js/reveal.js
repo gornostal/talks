@@ -438,6 +438,7 @@ var Reveal = (function(){
 			var data = {
 				background: slide.getAttribute( 'data-background' ),
 				backgroundSize: slide.getAttribute( 'data-background-size' ),
+				backgroundOpacity: slide.getAttribute( 'data-background-opacity' ),
 				backgroundImage: slide.getAttribute( 'data-background-image' ),
 				backgroundColor: slide.getAttribute( 'data-background-color' ),
 				backgroundRepeat: slide.getAttribute( 'data-background-repeat' ),
@@ -466,6 +467,7 @@ var Reveal = (function(){
 			if( data.backgroundSize ) element.style.backgroundSize = data.backgroundSize;
 			if( data.backgroundImage ) element.style.backgroundImage = 'url("' + data.backgroundImage + '")';
 			if( data.backgroundColor ) element.style.backgroundColor = data.backgroundColor;
+			if( data.backgroundOpacity ) element.style.opacity = data.backgroundOpacity;
 			if( data.backgroundRepeat ) element.style.backgroundRepeat = data.backgroundRepeat;
 			if( data.backgroundPosition ) element.style.backgroundPosition = data.backgroundPosition;
 			if( data.backgroundTransition ) element.setAttribute( 'data-background-transition', data.backgroundTransition );
