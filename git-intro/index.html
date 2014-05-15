@@ -102,8 +102,9 @@ Notes:
             </p>
 
             <aside class="notes">
+                Oleksandr <br>
                 Agenda <br>
-                about me
+                -> about me
             </aside>
         </section>
 
@@ -135,7 +136,6 @@ Notes:
             <p>commit</p>
             <p>diff</p>
             <p>merge</p>
-            <p>snapshot</p>
         </section>
 
 
@@ -145,12 +145,20 @@ Notes:
                 <img src="images/branches.png">
                 <br>
             </h2>
+
+            <aside class="notes">
+                на даний момент все зрозуміло?
+            </aside>
         </section>
 
 
 
         <section>
             <h2>Чому git?</h2>
+
+            <aside class="notes">
+                забути про SVN
+            </aside>
         </section>
 
 
@@ -198,6 +206,10 @@ Notes:
                 <img src="images/DVCS.png" style="width: 491.0858995137763px; height: 600px; max-height: none; max-width: none;">
                 <br>
             </p>
+
+            <aside class="notes">
+                hg, bazaar
+            </aside>
         </section>
 
 
@@ -267,6 +279,10 @@ Notes:
                     <td><a href="http://git-scm.com/">git-scm.com</a></td>
                 </tr>
             </table>
+
+            <aside class="notes">
+                git - це просто один executable file <br>
+            </aside>
         </section>
 
 
@@ -458,6 +474,10 @@ Created commit <span class="hlf fragment">77d3001</span>: descriptive commit mes
             <div style="position: relative; overflow: hidden; width: 323px; height: 317px; margin: auto">
                 <img style="position: absolute; top: 0; left: 0; max-width: none; max-height: none" src="images/commit.png" alt="">
             </div>
+
+            <aside class="notes">
+                3 types of objects
+            </aside>
         </section>
 
 
@@ -502,7 +522,8 @@ $ git commit -am 'updated logo'
 
         <section data-background="images/commit-3.png" data-background-size="90%" data-background-transition="none">
             <aside class="notes">
-                Demo
+                Demo <br>
+                $ export PROMPT="$ "
             </aside>
         </section>
 
@@ -518,6 +539,10 @@ $ git commit -am 'updated logo'
 
         <section>
             <h2>Гілки (branches) &ndash; посилання на хеш коміта</h2>
+
+            <aside class="notes">
+                HEAD
+            </aside>
         </section>
 
 
@@ -563,29 +588,12 @@ ref: refs/heads/master</pre>
                 <li class="fragment">переміщає вказівник HEAD на іншу гілку</li>
                 <li class="fragment">оновлює робочу директорію</li>
             </ol>
-        </section>
-
-
-
-
-        <section>
-            <img src="images/head.png" alt="">
-        </section>
-
-
-
-        <section>
-            <pre>$ git checkout dev</pre>
-        </section>
-
-
-        <section>
-            <img src="images/head-dev.png" alt="">
 
             <aside class="notes">
                 Інші особливості git checkout
             </aside>
         </section>
+
 
 
 
@@ -602,7 +610,7 @@ ref: refs/heads/master</pre>
         <section>
             <h3>Взяти файл з іншого коміту</h3>
             <br><br>
-            <h2 class="monohead">git checkout <span class="hlcf fragment">ac84f5</span> -- index.html </h2>
+            <h2 class="monohead">git checkout ac84f5 -- index.html </h2>
         </section>
 
 
@@ -641,13 +649,17 @@ $ git checkout new-feature</pre>
 
         <section>
             <img src="images/merge-ff-0.png" alt="">
+
+            <aside class="notes">
+                Представте що ви Git
+            </aside>
         </section>
 
 
 
         <section>
             <pre>$ git checkout master
-$ git merge branch-a</pre>
+$ git merge dev</pre>
         </section>
 
 
@@ -785,6 +797,12 @@ Automatic merge failed; fix conflicts and then commit the result.</pre>
         </section>
 
 
+
+
+
+        <section>
+            <h2 class="monohead">git push [REMOTE] [BRANCH]</h2>
+        </section>
 
 
 
@@ -994,6 +1012,20 @@ Automatic merge failed; fix conflicts and then commit the result.</pre>
         <section>
             Слайди <br><br>
             <a href="http://gornostal.github.io/talks/git-intro/#/">gornostal.github.io/talks/git-intro</a>
+            <br>
+            <br>
+            <br>
+
+            <table cellspacing="20" style="margin: 0 auto">
+                <tr>
+                    <td style="color: #666; text-align: right">Email:</td>
+                    <td><a href="mailto:sanya.gornostal@gmail.com">sanya.gornostal@gmail.com</a></td>
+                </tr>
+                <tr>
+                    <td style="color: #666; text-align: right">Github:</td>
+                    <td><a href="https://github.com/gornostal/">github.com/gornostal</a></td>
+                </tr>
+            </table>
         </section>
 
 
